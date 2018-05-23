@@ -78,9 +78,9 @@ void setup_anchor(uint16_t userShortAddress, bool startAsTag, uint32_t userAnten
 
   //init dw1000 configuration
   DW1000Ranging.initCommunication();
-  DW1000Ranging.attachNewRange(newRange_anchor);
+  //DW1000Ranging.attachNewRange(newRange_anchor);
   DW1000Ranging.attachMasterRange(masterRange_anchor);
-  DW1000Ranging.attachMeasureComplete(measureComplete);
+  //DW1000Ranging.attachMeasureComplete(measureComplete);
 
   if (weAreAnchor) {
     switch(myConfig_anc.channel)
@@ -126,9 +126,10 @@ void loop_anchor()
 {
   reloadWatchdog();
 
-  checkCommandMenu_anchor();
+  //checkCommandMenu_anchor();
 
   DW1000Ranging.dwloop();
+  //newSerial.println(_isMaster, DEC);
 
   //At least the blink isr should happen. If not maybe DW1000 froze.
   if ( dw1000RestartRequested || (millis()-DW1000Ranging.lastInterruptTime)>(weAreAnchor?1000:5000) )
@@ -137,9 +138,9 @@ void loop_anchor()
     DW1000Ranging.lastInterruptTime = millis();
     //reinit the configuration
     DW1000Ranging.initCommunication();
-    DW1000Ranging.attachNewRange(newRange_anchor);
+   // DW1000Ranging.attachNewRange(newRange_anchor);
     DW1000Ranging.attachMasterRange(masterRange_anchor);
-    DW1000Ranging.attachMeasureComplete(measureComplete);
+    //DW1000Ranging.attachMeasureComplete(measureComplete);
     if (weAreAnchor) {
       switch(myConfig_anc.channel)
       {
@@ -198,21 +199,21 @@ void printDeviceTable()
   SerialOut.print("\x1B[2J"); //clear screen
 //  SerialOut.print("Active");
 //  SerialOut.print("\t");
-  SerialOut.print("Type");
-  SerialOut.print("\t");
-  SerialOut.print("Address");
-  SerialOut.print("\t");
-  SerialOut.print("Range");
-  SerialOut.print("\t");
-  SerialOut.print("Battery");
-  SerialOut.print("\t");
-  SerialOut.print("OthRxP");
-  SerialOut.print("\t");
-  SerialOut.print("OurRxP");
-  SerialOut.print("  (ADDR=");
-  SerialOut.print(my_short_address, HEX);
-  SerialOut.print(") ");
-  SerialOut.print(millis() & 0xF, HEX);
+  //SerialOut.print("Type");
+  // SerialOut.print("\t");
+  // SerialOut.print("Address");
+  // SerialOut.print("\t");
+  // SerialOut.print("Range");
+  // SerialOut.print("\t");
+  // SerialOut.print("Battery");
+  // SerialOut.print("\t");
+  // SerialOut.print("OthRxP");
+  // SerialOut.print("\t");
+  // SerialOut.print("OurRxP");
+  // SerialOut.print("  (ADDR=");
+  // SerialOut.print(my_short_address, HEX);
+  // SerialOut.print(") ");
+  // SerialOut.print(millis() & 0xF, HEX);
 #if DO_ANTENNA_CALIB
   if (weAreAnchor)
   {

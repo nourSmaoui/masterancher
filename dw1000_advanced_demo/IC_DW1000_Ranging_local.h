@@ -77,7 +77,7 @@
 #define TIMER_DELAY_POLL   10    //wait this long for poll ack
 #define TIMER_DELAY_RANGE  10    //wait this long for range report
 #define TIMER_REC_DELAY_POLL 9
-#define DEFAULT_TIMER_DELAY 100   //on Anchor: time between device table cleanup, on tag: pause after cycle complete
+#define DEFAULT_TIMER_DELAY 300   //on Anchor: time between device table cleanup, on tag: pause after cycle complete
  
 
 //debug mode
